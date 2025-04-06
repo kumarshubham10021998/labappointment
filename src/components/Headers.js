@@ -4,6 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container, Button, Modal } from "react-bootstrap";
 import Register from "./Register";
 import Login from "./Login";
+import "./Header.css";
+
+import logo from "../assets/img/logo.png";
 
 const Headers = () => {
   const [show, setShow] = useState(false);
@@ -31,14 +34,20 @@ const Headers = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar expand="lg" sticky="top" className="my-3">
         <Container>
-          <Navbar.Brand as={Link} to="/">MyApp</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            <img src={logo} alt="logo" className="main-logo" />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about">
+                About
+              </Nav.Link>
             </Nav>
 
             {user ? (
@@ -52,10 +61,14 @@ const Headers = () => {
               </>
             ) : (
               <>
-                <Button variant="outline-light" onClick={() => handleShow("login")}>
+                <Button variant="secondary" onClick={() => handleShow("login")}>
                   Login
                 </Button>
-                <Button variant="light" className="ms-2" onClick={() => handleShow("register")}>
+                <Button
+                  className="ms-2"
+                  size="lg"
+                  onClick={() => handleShow("register")}
+                >
                   Register
                 </Button>
               </>
@@ -69,7 +82,11 @@ const Headers = () => {
           <Modal.Title>{isLogin ? "Login" : "Register"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {isLogin ? <Login onLogin={handleUserUpdate} /> : <Register onRegister={handleUserUpdate} />}
+          {isLogin ? (
+            <Login onLogin={handleUserUpdate} />
+          ) : (
+            <Register onRegister={handleUserUpdate} />
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
