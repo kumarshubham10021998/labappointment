@@ -1,0 +1,14 @@
+.main-logo{
+    max-width: 100px;
+}
+nav.navbar {
+    background: #fff;
+    max-width: 1140px;
+    margin-left: auto;
+    border-radius: 15px;
+    margin-right: auto;
+}
+a.nav-link {
+    font-size: 16px;
+    font-weight: 500;
+}

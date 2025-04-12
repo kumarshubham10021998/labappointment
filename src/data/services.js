@@ -5,7 +5,6 @@ const services = [
         price: 699,
         description: "Basic health check-up package covering essential tests.",
         modalId: "exampleModal",
-        image: "/assets/img/pre-helath1.png", // Image path
         details: [
             "Blood Vessels",
             "Glucose In Body",
@@ -22,7 +21,6 @@ const services = [
         price: 1299,
         description: "Comprehensive package covering additional test parameters.",
         modalId: "exampleModal2",
-        image: "/assets/img/pre-helath2.png",
         details: [
             "Blood Vessels",
             "Glucose In Body",
@@ -39,7 +37,6 @@ const services = [
         price: 2500,
         description: "Extensive check-up covering a wide range of tests.",
         modalId: "exampleModal3",
-        image: "/assets/img/pre-helath3.png",
         details: [
             "Blood Vessels",
             "Glucose In Body",
@@ -58,7 +55,6 @@ const services = [
         price: "300",
         description: "Various urine-based diagnostic tests.",
         modalId: "",
-        image: "/assets/img/pre-helath4.png",
     },
     {
         id: 5,
@@ -66,7 +62,6 @@ const services = [
         price: "200",
         description: "A range of blood tests for different health parameters.",
         modalId: "",
-        image: "/assets/img/pre-helath5.png",
     },
     {
         id: 6,
@@ -74,7 +69,7 @@ const services = [
         price: "300",
         description: "Tests to identify allergic reactions to different substances.",
         modalId: "",
-        image: "/assets/img/pre-helath6.png",
+
     }
 ];
 
