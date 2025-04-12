@@ -1,0 +1,111 @@
+/* Container */
+.container-service {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Grid Layout */
+  .service-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Service Card */
+  .service-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Highlighted Service */
+   /*.highlight {
+   background: #0c713d; 
+    color: white;
+  } */
+  .service-card:hover{
+    background: #0c713d; /* Green color for the highlighted card */
+    color: #0c713d;
+  }
+  /* Icon */
+  .service-icon {
+    font-size: 40px;
+    color: #1f3b4d;
+    margin-bottom: 10px;
+  }
+  
+  .highlight .service-icon {
+    color: white;
+  }
+  
+  /* Title */
+  .service-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  /* Buttons */
+  .service-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .read-more {
+    background: #f0f0f0;
+    color: #1f3b4d;
+    border-radius: 5px;
+  }
+  
+  .book-now {
+    background: #00d084;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .read-more:hover,
+  .book-now:hover {
+    opacity: 0.8;
+  }
+  
+  /* Price Section */
+  .service-price {
+    font-size: 18px;
+    font-weight: bold;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .highlight .service-price {
+    background: white;
+    color: #0c713d;
+  }
+  
