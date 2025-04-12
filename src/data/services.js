@@ -69,6 +69,7 @@ const services = [
         price: "300",
         description: "Tests to identify allergic reactions to different substances.",
         modalId: "",
+
     }
 ];
 
