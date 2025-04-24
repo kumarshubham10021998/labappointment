@@ -43,7 +43,7 @@ const LabBlocks = () => {
 
   // to handle opening or closing of modal
   const showModal = () => setShow(true);
-  const hideModal = () => setShow(false);
+  const onHide = () => setShow(false);
 
   return (
     <Container className="pt-5 pb-4 px-0">
@@ -67,7 +67,11 @@ const LabBlocks = () => {
               <div>{iconsArr[index]}</div>
               <h4>{data.title}</h4>
               <p>{data.text}</p>
-              <Button variant="secondary" onClick={showModal}>
+              <Button
+                variant="secondary"
+                className="justify-content-center"
+                onClick={showModal}
+              >
                 Book Appointment
               </Button>
             </div>
@@ -76,12 +80,7 @@ const LabBlocks = () => {
       </Row>
 
       {/* form modal */}
-      <MainModal
-        show={show}
-        hideModal={hideModal}
-        centered
-        footer={true}
-      ></MainModal>
+      <MainModal show={show} onHide={onHide} centered footer={true}></MainModal>
     </Container>
   );
 };

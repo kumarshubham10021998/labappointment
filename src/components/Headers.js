@@ -50,7 +50,16 @@ const Headers = () => {
 
   return (
     <>
-      <Navbar expand="lg" sticky="top" className="my-3" style={{ backgroundColor: "#5388cc" }}>
+      <Navbar
+        expand="lg"
+        sticky="top"
+        className="my-3 container"
+        style={{
+          backgroundColor: "#5388cc",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
         <Container>
           <Navbar.Brand as={Link} to="/">
             <img
@@ -62,9 +71,15 @@ const Headers = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto text-light">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/service-list">Service</Nav.Link>
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about">
+                About
+              </Nav.Link>
+              <Nav.Link as={Link} to="/service-list">
+                Service
+              </Nav.Link>
             </Nav>
 
             {user ? (
@@ -81,7 +96,11 @@ const Headers = () => {
                 <Button variant="secondary" onClick={() => handleShow("login")}>
                   Login
                 </Button>
-                <Button className="ms-2" size="lg" onClick={() => handleShow("register")}>
+                <Button
+                  className="ms-2"
+                  size="lg"
+                  onClick={() => handleShow("register")}
+                >
                   Register
                 </Button>
               </>
