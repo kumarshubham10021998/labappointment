@@ -8,7 +8,6 @@ import "./Header.css";
 
 import logoDefault from "../assets/img/logo.png";
 import logoScrolled from "../assets/img/logo1.png";
-
 const Headers = () => {
   const [show, setShow] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
