@@ -7,7 +7,7 @@ export const MainModal = ({
   heading,
   className,
   show,
-  hideModal,
+  onHide,
   footer,
   ...props
 }) => {
@@ -54,6 +54,7 @@ export const MainModal = ({
   return (
     <Modal
       show={show}
+      onHide={onHide}
       style={style}
       className={className || "custom-modal"}
       {...props}
@@ -181,7 +182,7 @@ export const MainModal = ({
 
       {footer && (
         <Modal.Footer>
-          <Button onClick={hideModal} variant="secondary">
+          <Button onClick={onHide} variant="secondary">
             Close
           </Button>
         </Modal.Footer>

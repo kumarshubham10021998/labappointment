@@ -4,7 +4,7 @@ import bgImage from "../assets/img/home-banner.png"; // Replace with actual path
 
 const HomeBanner = () => {
   return (
-    <div style={{ position: "relative", width: "100%" }} className="pt-4">
+    <div style={{ position: "relative", width: "100%" }} className="pt-1">
       <img
         src={bgImage}
         alt="Medical Lab Background"

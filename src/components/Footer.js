@@ -8,8 +8,9 @@ const Footer = () => {
         backgroundColor: "#ffffff",
         color: "#333",
         borderRadius: "15px",
+        margin: "0 auto",
       }}
-      className="pt-5 pb-3 px-3 mb-5"
+      className="pt-5 pb-3 px-3 mb-5 container"
     >
       <Container>
         <Row>
