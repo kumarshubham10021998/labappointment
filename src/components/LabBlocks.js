@@ -1,3 +1,4 @@
+import Register from "./Register";
 import React, { useState } from "react";
 import { MainModal } from "./Modal";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -80,7 +81,15 @@ const LabBlocks = () => {
       </Row>
 
       {/* form modal */}
-      <MainModal show={show} onHide={onHide} centered footer={true}></MainModal>
+      <MainModal
+        show={show}
+        onHide={onHide}
+        centered
+        footer={false}
+        heading={"Register"}
+      >
+        <Register />
+      </MainModal>
     </Container>
   );
 };
