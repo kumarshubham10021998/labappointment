@@ -44,7 +44,6 @@ export const MainModal = ({
       const result = await response.json();
       console.log(result);
       alert("Booking submitted successfully!");
-      hideModal(); // Close modal after success
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong!");
