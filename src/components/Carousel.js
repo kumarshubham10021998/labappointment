@@ -7,8 +7,8 @@ import carousel2 from "../assets/img/carousel-2.jpg";
 const HeaderCarousel = () => {
   return (
     <div className="container-fluid header-carousel px-0 mb-5">
-      <Carousel fade>
-        <Carousel.Item>
+      <Carousel fade >
+        <Carousel.Item >
           <img className="d-block w-100" src={carousel1} alt="First slide" />
           <Carousel.Caption>
             <div className="container">
