@@ -35,10 +35,10 @@ a.nav-link {
   }
 
   /* The following CSS is for the pulse effect on the side button */
-.side-btn {
-  background: #d0f0f8;
-  width: 55px;
-  border-radius: 0 15px 15px 0;
+  .side-btn {
+    background: #d0f0f8;
+    border-radius: 10px;
+    margin-left: 25px;
 }
 .pulse {
   animation: pulse-animation 2s infinite;

@@ -148,7 +148,7 @@ const Headers = () => {
             )}
           </Navbar.Collapse>
 
-          <div className="side-btn pulse" style={{ height: "100px" }}>
+          <div className="side-btn pulse">
             <NavLink
               to="/lab-register"
               style={{
