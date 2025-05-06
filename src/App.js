@@ -6,6 +6,7 @@ import Header from "./components/Headers";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ServiceList from "./pages/ServiceList";
+import LabRegister from "./pages/LabRegister";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         {/* <Route path="/" element={<Carousel />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/service-list" element={<ServiceList />} />
+        <Route path="/lab-register" element={<LabRegister />} />
       </Routes>
+
       <Footer />
     </Router>
   );

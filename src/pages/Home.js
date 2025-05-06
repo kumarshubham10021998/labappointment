@@ -1,7 +1,6 @@
 import React from "react";
 import HomeBanner from "../components/HomeBanner";
 import LabBlocks from "../components/LabBlocks";
-import ScrollTextBlock from "../components/ScrollTextBlock";
 import "./Home.css";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -20,9 +19,7 @@ const Home = () => {
           <Col className="lab-blk-sec" lg={12}>
             <LabBlocks></LabBlocks>
           </Col>
-          {/*  <Col className="scroll-text-sec" lg={12}>
-            <ScrollTextBlock></ScrollTextBlock>
-          </Col> */}
+          <Col className="scroll-text-sec" lg={12}></Col>
         </Row>
       </Container>
     </Container>

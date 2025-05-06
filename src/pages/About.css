@@ -1,0 +1,37 @@
+.choose-us-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.choose-us-list li {
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 2% 1%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    width: 31%;
+    padding-left: 70px;
+    overflow: hidden;
+    min-height: 110px;
+    transition: .35s ease-in-out;
+}
+.choose-us-list li i {
+    position: absolute;
+    top: 0;
+    left: -35px;
+    font-size: 75px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+    opacity: .9;
+    transition: .35s ease-in-out;
+}
+.choose-us-list li:hover {
+    padding-left: 100px;
+}
+.choose-us-list li:hover i {
+    left: 10px;
+    opacity: 1;
+    filter: none;
+}

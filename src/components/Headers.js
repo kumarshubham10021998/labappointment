@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container, Button, Modal } from "react-bootstrap";
 import Register from "./Register";
@@ -53,24 +53,65 @@ const Headers = () => {
       <Navbar
         expand="lg"
         sticky="top"
-        className="my-3 container"
+        className="mb-3"
         style={{
-          backgroundColor: "#5388cc",
+          transition: "0.3s ease-in-out",
+          backgroundColor: scrolled ? "rgb(83, 136, 204, 0.7)" : "#5388cc",
           marginLeft: "auto",
           marginRight: "auto",
         }}
       >
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Collapse id="navBar-collapse" className="d-none d-md-block">
+            <Nav className="me-auto text-light ">
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  isActive ? "nav-link custom-active" : "nav-link"
+                }
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? "nav-link custom-active" : "nav-link"
+                }
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/service-list"
+                className={({ isActive }) =>
+                  isActive ? "nav-link custom-active" : "nav-link"
+                }
+              >
+                Service
+              </NavLink>
+            </Nav>
+          </Navbar.Collapse>
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            style={{ position: "relative", left: "90px" }}
+          >
             <img
               src={scrolled ? logoScrolled : logoDefault}
               alt="logo"
               className="main-logo"
+              style={{
+                transition: "0.3s ease-in-out",
+                maxWidth: scrolled ? "100px" : "150px",
+              }}
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto text-light">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="justify-content-center justify-content-md-end"
+          >
+            <Nav className="me-auto text-light d-md-none ">
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
@@ -106,6 +147,21 @@ const Headers = () => {
               </>
             )}
           </Navbar.Collapse>
+
+          <div className="side-btn pulse" style={{ height: "100px" }}>
+            <NavLink
+              to="/lab-register"
+              style={{
+                padding: "12px 22px",
+                display: "inline-block",
+                textDecoration: "none",
+                fontWeight: "500",
+                color: "#000",
+              }}
+            >
+              Business Inquiry
+            </NavLink>
+          </div>
         </Container>
       </Navbar>
 
