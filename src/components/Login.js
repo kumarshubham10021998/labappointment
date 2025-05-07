@@ -11,7 +11,7 @@ const Login = ({ onLogin }) => {
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
   const isValidMobile = (value) =>
-    /^[6-9]\d{9}$/.test(value.trim()); // For 10-digit Indian numbers starting from 6-9
+    /^[6-9]\d{9}$/.test(value.trim());
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -79,7 +79,6 @@ const Login = ({ onLogin }) => {
         {error && <Alert variant="danger">{error}</Alert>}
 
         <Form.Group className="mb-3">
-          {/* <Form.Label>Login lab4everywhere</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter mobile number or email"

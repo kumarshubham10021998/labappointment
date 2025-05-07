@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 
 export const MainModal = ({
-  children,
-  style,
-  heading,
-  className,
   show,
   onHide,
-  footer,
+  heading,
+  className,
+  registrationId,
   ...props
 }) => {
   const [formData, setFormData] = useState({
@@ -22,6 +20,42 @@ export const MainModal = ({
     pin: "",
     status: "Pending",
   });
+
+  useEffect(() => {
+    if (show && registrationId) {
+      console.log("Fetching booking data for:", registrationId);
+
+      fetch(`http://localhost/api-lab4everywhere/booking.php?registrationId=${registrationId}`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Network response was not ok");
+          return res.json();
+        })
+        .then((data) => {
+          console.log("API Response:", data);
+          if (data && data.booking) {
+            setFormData({
+              registrationId: data.booking.registrationId || registrationId,
+              patient_name: data.booking.patient_name || "",
+              age: data.booking.age || "",
+              relation: data.booking.relation || "",
+              alternate_mobile: data.booking.alternate_mobile || "",
+              address: data.booking.address || "",
+              district: data.booking.district || "",
+              pin: data.booking.pin || "",
+              status: "Pending",
+            });
+          } else {
+            setFormData((prev) => ({
+              ...prev,
+              registrationId,
+            }));
+          }
+        })
+        .catch((err) => {
+          console.error("❌ Failed to fetch booking data:", err);
+        });
+    }
+  }, [show, registrationId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,10 +76,11 @@ export const MainModal = ({
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-      console.log(result);
-      alert("Booking submitted successfully!");
+      console.log("POST result:", result);
+      alert("✅ Booking submitted successfully!");
+      onHide();
     } catch (error) {
-      console.error("Error:", error);
+      console.error("❌ Submit error:", error);
       alert("Something went wrong!");
     }
   };
@@ -54,31 +89,28 @@ export const MainModal = ({
     <Modal
       show={show}
       onHide={onHide}
-      style={style}
       className={className || "custom-modal"}
       {...props}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">{heading}</Modal.Title>
+        <Modal.Title>{heading}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Col md={6}>
-              <Form.Group controlId="formRegistrationId">
+              <Form.Group>
                 <Form.Label>Registration ID</Form.Label>
                 <Form.Control
                   type="text"
                   name="registrationId"
                   value={formData.registrationId}
-                  onChange={handleChange}
-                  required
+                  readOnly
                 />
               </Form.Group>
             </Col>
-
             <Col md={6}>
-              <Form.Group controlId="formPatientName">
+              <Form.Group>
                 <Form.Label>Patient Name</Form.Label>
                 <Form.Control
                   type="text"
@@ -93,7 +125,7 @@ export const MainModal = ({
 
           <Row className="mb-3">
             <Col md={6}>
-              <Form.Group controlId="formAge">
+              <Form.Group>
                 <Form.Label>Age</Form.Label>
                 <Form.Control
                   type="number"
@@ -104,9 +136,8 @@ export const MainModal = ({
                 />
               </Form.Group>
             </Col>
-
             <Col md={6}>
-              <Form.Group controlId="formRelation">
+              <Form.Group>
                 <Form.Label>Relation</Form.Label>
                 <Form.Control
                   type="text"
@@ -120,7 +151,7 @@ export const MainModal = ({
 
           <Row className="mb-3">
             <Col md={6}>
-              <Form.Group controlId="formAlternateMobile">
+              <Form.Group>
                 <Form.Label>Alternate Mobile</Form.Label>
                 <Form.Control
                   type="text"
@@ -130,9 +161,8 @@ export const MainModal = ({
                 />
               </Form.Group>
             </Col>
-
             <Col md={6}>
-              <Form.Group controlId="formAddress">
+              <Form.Group>
                 <Form.Label>Address</Form.Label>
                 <Form.Control
                   type="text"
@@ -146,7 +176,7 @@ export const MainModal = ({
 
           <Row className="mb-3">
             <Col md={6}>
-              <Form.Group controlId="formDistrict">
+              <Form.Group>
                 <Form.Label>District</Form.Label>
                 <Form.Control
                   type="text"
@@ -156,9 +186,8 @@ export const MainModal = ({
                 />
               </Form.Group>
             </Col>
-
             <Col md={6}>
-              <Form.Group controlId="formPin">
+              <Form.Group>
                 <Form.Label>Pin Code</Form.Label>
                 <Form.Control
                   type="text"
@@ -169,23 +198,21 @@ export const MainModal = ({
               </Form.Group>
             </Col>
           </Row>
+
           <Form.Control type="hidden" name="status" value={formData.status} />
 
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
+            <Button type="submit" variant="primary">
               Submit
             </Button>
           </div>
         </Form>
       </Modal.Body>
-
-      {footer && (
-        <Modal.Footer>
-          <Button onClick={onHide} variant="secondary">
-            Close
-          </Button>
-        </Modal.Footer>
-      )}
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 };
