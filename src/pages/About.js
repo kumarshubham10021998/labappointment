@@ -4,6 +4,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { Col, Row, Container, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./About.css";
 import HomeBanner from "../components/HomeBanner";
 import about2 from "../assets/img/about-2.jpg";
 import about3 from "../assets/img/about-3.jpg";
@@ -89,8 +90,11 @@ const About = () => {
               full body check-ups and essential diagnostic tests right to your
               doorstep — no long queues, no unnecessary delays.
             </p>
-            <h4 className="mb-3 text-secondary">Why Choose Us?</h4>
-            <ul className="list-unstyled fs-5">
+          </Col>
+          <Col lg={12} className="">
+            <h4 className="mb-3 text-secondary text-center">Why Choose Us?</h4>
+
+            <ul className="list-unstyled fs-5 choose-us-list">
               <li className="d-flex align-items-center mb-2">
                 <i className="bi bi-house-door-fill text-success me-2"></i> Home
                 Sample Collection
@@ -113,7 +117,6 @@ const About = () => {
               </li>
             </ul>
           </Col>
-
           {/* Block 4: Call-to-Action Section */}
           {/*  <Col lg={12} className="text-center mt-5">
             <div

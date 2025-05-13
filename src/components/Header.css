@@ -3,9 +3,52 @@
 }
 nav.navbar {
     background: #fff;
-    border-radius: 15px;
+
 }
 a.nav-link {
     font-size: 16px;
     font-weight: 500;
+    color: #fff !important;
+}
+.nav-link {
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+  }
+  
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    height: 2px;
+    width: 0%;
+    background-color: #fff;
+    transition: width 0.3s ease;
+    border-radius: 1px;
+  }
+  
+.nav-link.custom-active::after {
+    width: 75%;
+  }
+
+  /* The following CSS is for the pulse effect on the side button */
+  .side-btn {
+    background: #d0f0f8;
+    border-radius: 10px;
+    margin-left: 25px;
+}
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
 }

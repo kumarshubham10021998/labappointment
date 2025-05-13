@@ -1,0 +1,41 @@
+.scroll-banner {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+
+  }
+  
+  .scroll-track {
+    display: inline-block;
+    animation: scrollText 150s linear infinite;
+  }
+  
+  .scroll-track span {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    white-space: pre;
+}
+  
+  @keyframes scrollText {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .scroll-banner {
+      padding: 8px 0;
+    }
+  
+    .scroll-track span {
+      font-size: 1rem;  /* Smaller font for mobile */
+    }
+  }
+  
