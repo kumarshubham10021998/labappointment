@@ -1,7 +1,6 @@
 import React from "react";
 import HomeBanner from "../components/HomeBanner";
 import LabBlocks from "../components/LabBlocks";
-import ScrollTextBlock from "../components/ScrollTextBlock";
 import "./Home.css";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -10,19 +9,12 @@ const Home = () => {
     <Container fluid>
       <Container className="main-container">
         <Row>
-          <Col
-            className="banner-wrap"
-            style={{ borderRadius: "15px " }}
-            lg={12}
-          >
+          <Col className="banner-wrap" lg={12}>
             <HomeBanner></HomeBanner>
           </Col>
           <Col className="lab-blk-sec" lg={12}>
             <LabBlocks></LabBlocks>
           </Col>
-          {/*  <Col className="scroll-text-sec" lg={12}>
-            <ScrollTextBlock></ScrollTextBlock>
-          </Col> */}
         </Row>
       </Container>
     </Container>

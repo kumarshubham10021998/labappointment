@@ -13,6 +13,7 @@ const HomeBanner = () => {
           height: "auto",
           maxHeight: "600px",
           objectFit: "cover",
+          borderRadius: "15px",
         }}
       />
 
