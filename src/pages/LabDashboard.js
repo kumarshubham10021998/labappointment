@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
-import bussImg from "../assets/img/bussiness-inquiry.gif";
-
 const LabRegistrationSection = () => {
   const [formData, setFormData] = useState({
     labName: "",
@@ -10,7 +8,9 @@ const LabRegistrationSection = () => {
     labType: "",
     contact: "",
     email: "",
+    type: "partner",
   });
+  const [isLogin, setIsLogin] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +36,7 @@ const LabRegistrationSection = () => {
                 marginBottom: "2rem",
                 borderRadius: "15px",
                 color: "#fff",
-                marginTop: "1rem",
+                marginTop: "0.5rem",
               }}
             >
               <h2
@@ -47,108 +47,38 @@ const LabRegistrationSection = () => {
                   textTransform: "uppercase",
                 }}
               >
-                Lab Registration
+                {isLogin ? "Welcome! Back" : "Partner with Us"}{" "}
               </h2>
             </div>
           </Col>
-          <Col xs={12} md={8}>
+          <Col xs={12} md={12}>
             <div
               style={{
                 textAlign: "center",
-                padding: "36px 40px",
+                paddingTop: "2rem",
+                paddingBottom: "1rem",
+                background: "rgb(108, 117, 125)",
+                marginBottom: "2rem",
                 borderRadius: "15px",
-                backgroundColor: "#f8f9fa",
-                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-                border: "1px solid #e0e0e0",
+                color: "#fff",
               }}
             >
-              <h2
-                style={{
-                  fontSize: "28px",
-                  fontWeight: "bold",
-                  color: "#1a1a1a",
-                  letterSpacing: "2px",
-                  marginBottom: "20px",
-                  lineHeight: "1.3",
-                  textTransform: "uppercase",
-                }}
-              >
-                Let’s Make a Difference Together
-              </h2>
-              <p
-                style={{
-                  fontSize: "20px",
-                  color: "#444",
-                  marginBottom: "25px",
-                  fontWeight: "400",
-                  lineHeight: "1.6",
-                }}
-              >
-                We're excited to invite your lab to be part of a transformative
-                journey.
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    color: "#fff",
-                    backgroundColor: "rgb(83 136 204)",
-                    padding: "0px 5px 2px",
-                    borderRadius: "5px",
-                    margin: "0 2px",
-                  }}
-                >
-                  Collaborate
-                </span>
-                ,
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    color: "#fff",
-                    backgroundColor: "rgb(83 136 204)",
-                    padding: "0px 5px 2px",
-                    borderRadius: "5px",
-                    margin: "0 2px",
-                  }}
-                >
-                  innovate
-                </span>
-                , and
-                <span
-                  style={{
-                    fontWeight: "bold",
-                    color: "#fff",
-                    backgroundColor: "rgb(83 136 204)",
-                    padding: "0px 5px 2px",
-                    borderRadius: "5px",
-                    margin: "0 2px",
-                  }}
-                >
-                  succeed
-                </span>{" "}
-                together.
-              </p>
-              <p
-                style={{
-                  fontSize: "18px",
-                  color: "#555",
-                  fontWeight: "300",
-                  lineHeight: "1.8",
-                  marginTop: "20px",
-                }}
-              >
-                Let's connect and create something extraordinary. Together, we
-                can make an impact.
+              <p style={{ color: "#fff" }}> Together, We Grow Stronger </p>
+              <p style={{ color: "#fff" }}>
+                At the heart of everything we do is collaboration. Our partners
+                play a key role in helping us deliver quality, innovation, and
+                value every step of the way. We proudly work with trusted
+                organizations who share our passion and commitment to
+                excellence. Whether it's technology, services, or community
+                impact, our partnerships help us reach new heights and create
+                better experiences for everyone we serve. Interested in
+                partnering with us? Let’s build something great together. Reach
+                out to explore how we can collaborate.
               </p>
             </div>
           </Col>
 
-          <Col xs={12} md={4}>
-            <img
-              src={bussImg}
-              alt="Business Inquiry"
-              style={{ width: "100%", borderRadius: "15px" }}
-            />
-          </Col>
-          <Col xs={12} md={12} style={{ margin: "2rem 0" }}>
+          <Col xs={12} md={8} style={{ margin: "2rem 0" }}>
             <Form
               onSubmit={handleSubmit}
               style={{
@@ -221,6 +151,7 @@ const LabRegistrationSection = () => {
               </Button>
             </Form>
           </Col>
+          <Col xs={12} md={4}></Col>
         </Row>
       </Container>
     </Container>

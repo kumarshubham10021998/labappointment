@@ -159,7 +159,7 @@ const Headers = () => {
                 color: "#000",
               }}
             >
-              Business Inquiry
+              Partners Page
             </NavLink>
           </div>
         </Container>
