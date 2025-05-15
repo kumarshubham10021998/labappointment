@@ -104,7 +104,7 @@ const Register = ({ onRegister }) => {
           pattern="^\d{10}$"
           required
         />
-        <Form.Text className="text-muted">Enter a 10-digit mobile number.</Form.Text>
+        {/* <Form.Text className="text-muted">Enter a 10-digit mobile number.</Form.Text> */}
       </Form.Group>
 
       <Form.Group className="mb-3">

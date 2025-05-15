@@ -1,6 +1,6 @@
 import Register from "./Register";
 import React, { useState } from "react";
-import { MainModal } from "./Modal";
+import { MainModal } from "./MainModal";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 import {
