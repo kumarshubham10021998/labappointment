@@ -1,6 +1,4 @@
-.main-logo{
-    max-width: 100px;
-}
+
 nav.navbar {
     background: #fff;
 
@@ -35,7 +33,7 @@ a.nav-link {
   }
 
   /* The following CSS is for the pulse effect on the side button */
-  .side-btn {
+.side-btn {
     background: #d0f0f8;
     border-radius: 10px;
     margin-left: 25px;

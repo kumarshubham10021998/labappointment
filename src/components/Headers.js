@@ -8,10 +8,10 @@ import "./Header.css";
 
 import logoDefault from "../assets/img/logo.png";
 import logoScrolled from "../assets/img/logo1.png";
-const Headers = () => {
+
+const Headers = ({ onUserUpdate, userData, onLogout }) => {
   const [show, setShow] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [user, setUser] = useState(null);
   const [scrolled, setScrolled] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,12 +25,12 @@ const Headers = () => {
       console.warn("Registration ID missing!");
       return;
     }
-    setUser(userData);
+    onUserUpdate(userData); // Use the prop callback instead of local state
     setShow(false);
   };
 
   const handleLogout = () => {
-    setUser(null);
+    onLogout(); // Use the prop callback instead of local state
   };
 
   // Handle scroll logo change
@@ -122,10 +122,10 @@ const Headers = () => {
               </Nav.Link>
             </Nav>
 
-            {user ? (
+            {userData ? (
               <>
                 <span className="text-light me-3">
-                  Registration ID: <strong>{user.registrationId}</strong>
+                  Registration ID: <strong>{userData.registrationId}</strong>
                 </span>
                 <Button variant="danger" onClick={handleLogout}>
                   Logout

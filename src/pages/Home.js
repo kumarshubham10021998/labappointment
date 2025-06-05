@@ -4,7 +4,7 @@ import LabBlocks from "../components/LabBlocks";
 import "./Home.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Home = () => {
+const Home = (userData) => {
   return (
     <Container fluid>
       <Container className="main-container">
@@ -13,7 +13,8 @@ const Home = () => {
             <HomeBanner></HomeBanner>
           </Col>
           <Col className="lab-blk-sec" lg={12}>
-            <LabBlocks></LabBlocks>
+            {console.log("User data in Home:", userData?.userData)}
+            <LabBlocks userData={userData?.userData}></LabBlocks>
           </Col>
         </Row>
       </Container>

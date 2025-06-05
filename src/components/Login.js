@@ -13,8 +13,7 @@ const Login = ({ onLogin }) => {
   const isValidEmail = (value) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-  const isValidMobile = (value) =>
-    /^[6-9]\d{9}$/.test(value.trim());
+  const isValidMobile = (value) => /^[6-9]\d{9}$/.test(value.trim());
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -46,7 +45,7 @@ const Login = ({ onLogin }) => {
 
     try {
       // Step 1: Login
-      const response = await fetch("http://localhost/api-lab4everywhere/login.php", {
+      const response = await fetch("/api-lab4everywhere/login.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +66,9 @@ const Login = ({ onLogin }) => {
       const regId = data.user.registrationId;
 
       // Step 2: Fetch booking details
-      const bookingResponse = await fetch(`http://localhost/api-lab4everywhere/booking.php?registrationId=${regId}`);
+      const bookingResponse = await fetch(
+        `/api-lab4everywhere/booking.php?registrationId=${regId}`
+      );
       const bookingData = await bookingResponse.json();
 
       if (!bookingResponse.ok || bookingData.status !== "success") {
@@ -107,7 +108,10 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <Container className="login-container" style={{ maxWidth: "400px", marginTop: "50px" }}>
+    <Container
+      className="login-container"
+      style={{ maxWidth: "400px", marginTop: "50px" }}
+    >
       <div className="login-card p-4 shadow-sm rounded">
         <h4 className="mb-4 text-center">Login to Lab4everywhere</h4>
 
@@ -125,7 +129,7 @@ const Login = ({ onLogin }) => {
 
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label srOnly>Email or Mobile</Form.Label>
+            <Form.Label visuallyHidden>Email or Mobile</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter your mobile number or email"
