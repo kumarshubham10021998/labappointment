@@ -21,10 +21,12 @@ const Register = ({ onRegister }) => {
     const { name, mobile, email, age } = formData;
 
     if (!name.trim()) return "Name is required!";
-    if (!/^\d{10}$/.test(mobile)) return "Enter a valid 10-digit mobile number!";
-    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) return "Enter a valid email address!";
+    if (!/^\d{10}$/.test(mobile))
+      return "Enter a valid 10-digit mobile number!";
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email))
+      return "Enter a valid email address!";
     if (!age || isNaN(age) || age <= 0) return "Enter a valid age!";
-    
+
     return null;
   };
 
@@ -42,7 +44,7 @@ const Register = ({ onRegister }) => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost/api-lab4everywhere/register.php", {
+      const response = await fetch("/api-lab4everywhere/register.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -65,9 +67,14 @@ const Register = ({ onRegister }) => {
 
       if (typeof onRegister === "function") {
         onRegister({
-          name: data.name,
+          name: formData.name,
           registrationId: data.registrationId,
+          mobile: formData.mobile,
+          email: formData.email,
+          age: formData.age,
         });
+
+        console.log(formData);
       }
     } catch (error) {
       setError(error.message);

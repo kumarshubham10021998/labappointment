@@ -1,17 +1,16 @@
-import Register from "./Register";
-import React, { useState } from "react";
-import { MainModal } from "./MainModal";
+import React, { useEffect, useState } from "react";
+import MainModal from "./MainModal";
 import { Container, Row, Col, Button } from "react-bootstrap";
-
 import {
   FaVials,
   FaMicroscope,
   FaHeartbeat,
   FaTemperatureHigh,
 } from "react-icons/fa";
+import UserBooking from "./UserBooking";
 
-const LabBlocks = () => {
-  // data
+const LabBlocks = ({ userData }) => {
+  // Data
   const data = [
     {
       title: "Lab Testing",
@@ -31,7 +30,7 @@ const LabBlocks = () => {
     },
   ];
 
-  // icons array
+  // Icons array
   const iconsArr = [
     <FaVials size={40} />,
     <FaMicroscope size={40} />,
@@ -39,17 +38,30 @@ const LabBlocks = () => {
     <FaTemperatureHigh size={40} />,
   ];
 
-  // trigger modal
+  const [user, setUser] = useState(null);
   const [show, setShow] = useState(false);
 
-  // to handle opening or closing of modal
-  const showModal = () => setShow(true);
-  const onHide = () => setShow(false);
+  // Update user when userData prop changes
+  useEffect(() => {
+    setUser(userData);
+
+    console.log("User data updated in LabBlocks:", userData);
+  }, [userData]);
+
+  // Modal handlers
+  const showModal = (e) => {
+    e.preventDefault();
+    setShow(true);
+  };
+
+  const onHide = () => {
+    setShow(false);
+  };
 
   return (
     <Container className="pt-5 pb-4 px-0">
       <Row>
-        {data.map((data, index) => (
+        {data.map((item, index) => (
           <Col md={6} className="mb-4" key={index}>
             <div
               style={{
@@ -66,8 +78,8 @@ const LabBlocks = () => {
               }}
             >
               <div>{iconsArr[index]}</div>
-              <h4>{data.title}</h4>
-              <p>{data.text}</p>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
               <Button
                 variant="secondary"
                 className="justify-content-center"
@@ -80,15 +92,25 @@ const LabBlocks = () => {
         ))}
       </Row>
 
-      {/* form modal */}
+      {/* Appointment Modal */}
       <MainModal
         show={show}
         onHide={onHide}
         centered
         footer={false}
-        heading={"Register"}
+        heading="Book Appointment"
+        className="booking-modal"
       >
-        <Register />
+        {user ? (
+          <UserBooking user={user}></UserBooking>
+        ) : (
+          <div className="text-center">
+            <h5>Please login or register first</h5>
+            <p className="text-muted">
+              You need to be logged in to book an appointment
+            </p>
+          </div>
+        )}
       </MainModal>
     </Container>
   );
