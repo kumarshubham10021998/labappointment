@@ -149,7 +149,7 @@ const Headers = ({ onUserUpdate, userData, onLogout }) => {
 
           <div className="side-btn pulse">
             <NavLink
-              to="/lab-register"
+              to="/PartnersPage"
               style={{
                 padding: "12px 22px",
                 display: "inline-block",

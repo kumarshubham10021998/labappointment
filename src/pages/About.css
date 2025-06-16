@@ -13,25 +13,99 @@
     margin: 2% 1%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     width: 31%;
-    padding-left: 70px;
     overflow: hidden;
-    min-height: 110px;
     transition: .35s ease-in-out;
+    display: flex;
+    flex-wrap: wrap;
+       text-align: center;
+        justify-content: flex-start;
+    flex-direction: column;
 }
 .choose-us-list li i {
+    font-size: 75px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+    opacity: .9;
+}
+/* .choose-us-list li i {
     position: absolute;
-    top: 0;
-    left: -35px;
+    top: -70px;
+    left: 0;
     font-size: 75px;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
     opacity: .9;
     transition: .35s ease-in-out;
+    right: 0;
 }
 .choose-us-list li:hover {
-    padding-left: 100px;
+    padding-top: 100px;
 }
 .choose-us-list li:hover i {
-    left: 10px;
+        top: -5px;
     opacity: 1;
     filter: none;
+} */
+
+
+/***************/
+
+/* Team Card Styles */
+.team-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.team-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.team-social-overlay {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.team-carousel .react-multi-carousel-item:hover .team-social-overlay {
+  bottom: 0;
+}
+
+.team-carousel .react-multi-carousel-item:hover .team-img {
+  transform: scale(1.1);
+}
+
+/* Carousel Arrow Styles */
+.team-carousel .react-multiple-carousel__arrow {
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 40px;
+  min-height: 40px;
+  transition: all 0.3s ease;
+}
+
+.team-carousel .react-multiple-carousel__arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.team-carousel .react-multiple-carousel__arrow::before {
+  font-size: 1rem;
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(90deg, #4f6d7a, #00d084);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom Shadow */
+.shadow-sm {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
 }

@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ServiceList from "./pages/ServiceList";
-import LabDashboard from "./pages/LabDashboard";
+import PartnersPage from "./pages/PartnersPage";
 
 function App() {
   const ScrollToTop = () => {
@@ -48,8 +48,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/service-list" element={<ServiceList />} />
         <Route
-          path="/lab-register"
-          element={<LabDashboard userData={userData} />}
+          path="/PartnersPage"
+          element={<PartnersPage userData={userData} />}
         />
       </Routes>
 
