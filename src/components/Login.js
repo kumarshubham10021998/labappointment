@@ -110,7 +110,7 @@ const Login = ({ onLogin }) => {
   return (
     <Container
       className="login-container"
-      style={{ maxWidth: "400px", marginTop: "50px" }}
+      style={{ maxWidth: "400px", marginTop: "20px" }}
     >
       <div className="login-card p-4 shadow-sm rounded">
         <h4 className="mb-4 text-center">Login to Lab4everywhere</h4>
@@ -174,6 +174,7 @@ const Login = ({ onLogin }) => {
             variant="link"
             size="sm"
             onClick={() => navigate("/lab-register")}
+            className="d-none"
           >
             Create Account
           </Button>
