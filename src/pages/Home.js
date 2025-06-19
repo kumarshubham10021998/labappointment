@@ -13,7 +13,6 @@ const Home = (userData) => {
             <HomeBanner></HomeBanner>
           </Col>
           <Col className="lab-blk-sec" lg={12}>
-            {console.log("User data in Home:", userData?.userData)}
             <LabBlocks userData={userData?.userData}></LabBlocks>
           </Col>
         </Row>
