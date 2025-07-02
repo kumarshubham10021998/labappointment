@@ -13,8 +13,9 @@ import {
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
+import Dashboard from "./Dashboard";
 
-const PartnersPage = ({ onLogin }) => {
+const PartnersPage = () => {
   const [formData, setFormData] = useState({
     labName: "",
     labLocation: "",
@@ -28,6 +29,7 @@ const PartnersPage = ({ onLogin }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -43,25 +45,19 @@ const PartnersPage = ({ onLogin }) => {
     try {
       if (isLogin) {
         // GET request for login
-        const response = await axios.get(
-          "/api-lab4everywhere/admin_login.php",
-          {
-            params: {
-              email: formData.email,
-              password: formData.password,
-            },
-          }
-        );
+        const response = await axios.get("/api-lab4everywhere/lab-login.php", {
+          params: {
+            email: formData.email,
+            password: formData.password,
+          },
+        });
 
         const data = response.data;
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        onLogin(data.user);
-        navigate("/dashboard");
+        setUserData(data.user);
       } else {
         // POST request for registration
         const response = await axios.post(
-          "/api-lab4everywhere/admin_register.php",
+          "/api-lab4everywhere/lab-login.php",
           formData
         );
         const data = response.data;
@@ -78,6 +74,20 @@ const PartnersPage = ({ onLogin }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLogout = () => {
+    setUserData(null);
+    setFormData({
+      labName: "",
+      labLocation: "",
+      labType: "",
+      contact: "",
+      email: "",
+      password: "",
+      type: "partner",
+    });
+    navigate("/PartnersPage");
   };
 
   const benefits = [
@@ -112,6 +122,10 @@ const PartnersPage = ({ onLogin }) => {
       icon: "🛎️",
     },
   ];
+
+  if (userData) {
+    return <Dashboard userData={userData} onLogout={handleLogout} />;
+  }
 
   return (
     <Container fluid className="p-0">
@@ -235,6 +249,7 @@ const PartnersPage = ({ onLogin }) => {
           </Row>
         </Container>
       </div>
+
       {/* Auth Form Section */}
       <div
         id="auth-section"
@@ -398,7 +413,6 @@ const PartnersPage = ({ onLogin }) => {
                       type="submit"
                       disabled={loading}
                       size="lg"
-                      className=""
                     >
                       {loading ? (
                         <>
@@ -426,7 +440,6 @@ const PartnersPage = ({ onLogin }) => {
                         setError("");
                       }}
                       size="lg"
-                      className=""
                     >
                       {isLogin
                         ? "Need an account? Register"
@@ -439,8 +452,9 @@ const PartnersPage = ({ onLogin }) => {
           </Row>
         </Container>
       </div>
+
       {/* Testimonials */}
-      <Container className="py-5 my-4 ">
+      <Container className="py-5 my-4">
         <h3 className="text-center mb-5 fw-bold">What Our Partners Say</h3>
         <Row className="g-4">
           {[
@@ -546,35 +560,6 @@ const PartnersPage = ({ onLogin }) => {
           </Col>
         </Row>
       </Container>
-
-      {/* Final CTA */}
-      <div
-        className="py-5 d-none"
-        style={{ backgroundColor: "#4f6d7a", color: "white" }}
-      >
-        <Container className="text-center py-4">
-          <h2 className="fw-bold mb-4">Ready to Grow Your Lab Business?</h2>
-          <p
-            className="fs-5 mb-4"
-            style={{ maxWidth: "700px", margin: "0 auto" }}
-          >
-            Join hundreds of labs already benefiting from our partnership
-            program.
-          </p>
-          <Button
-            variant="light"
-            size="lg"
-            className="px-5 py-3 rounded-pill fw-bold"
-            onClick={() => {
-              const formSection = document.getElementById("auth-section");
-              formSection.scrollIntoView({ behavior: "smooth" });
-              setIsLogin(false);
-            }}
-          >
-            Apply Now - It's Free
-          </Button>
-        </Container>
-      </div>
     </Container>
   );
 };
